@@ -1,0 +1,46 @@
+apply plugin: 'scala'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+apply plugin: 'application'
+
+applicationName = "app"
+mainClassName = "com.example.Boot"
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'http://repo.spray.io/'
+    }
+}
+
+configurations {
+    provided
+    provided.extendsFrom(compile)
+}
+
+dependencies {
+    compile 'org.scala-lang:scala-library:2.10.2'
+    compile 'io.spray:spray-can:1.2-RC2'
+    compile 'io.spray:spray-routing:1.2-RC2'
+    compile 'io.spray:spray-json_2.10:1.2.5'
+    compile 'com.typesafe.akka:akka-actor_2.10:2.2.0-RC1'
+
+    testCompile 'io.spray:spray-testkit:1.2-RC2'
+    testCompile 'com.typesafe.akka:akka-testkit_2.10:2.2.0-RC1'
+    testCompile 'org.specs2:specs2_2.10:1.14'
+
+    idea {
+        module {
+            scopes.PROVIDED.plus += configurations.provided
+        }
+    }
+
+    eclipse {
+        classpath {
+            plusConfigurations += configurations.provided
+            noExportConfigurations += configurations.provided
+        }
+    }
+}
+
+task stage(dependsOn: ['clean', 'installApp'])

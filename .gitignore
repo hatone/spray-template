@@ -5,4 +5,24 @@ target/
 lib_managed/
 src_managed/
 test-output/
+
+# Others
+.DS_Store
+
+# IntelliJ
 *.iml
+*.ipr
+*.iws
+.idea
+
+# eclipse
+.classpath
+.project
+.settings
+.pydevproject
+.springBeans
+log.txt
+.gradle
+gradle
+out/
+tools/switches/work/
