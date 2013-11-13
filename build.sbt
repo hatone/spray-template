@@ -24,3 +24,7 @@ libraryDependencies ++= {
 }
 
 seq(Revolver.settings: _*)
+
+ideaExcludeFolders += ".idea"
+
+ideaExcludeFolders += ".idea_modules"

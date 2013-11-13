@@ -21,10 +21,10 @@ class MyServiceActor extends Actor with MyService {
 
 
 // this trait defines our service behavior independently from the service actor
-trait MyService extends HttpService {
+trait MyService extends HttpService with SmallRoute {
 
   val myRoute =
-    path("") {
+    path("test") {
       get {
         respondWithMediaType(`text/html`) { // XML is marshalled to `text/xml` by default, so we simply override here
           complete {
@@ -36,5 +36,5 @@ trait MyService extends HttpService {
           }
         }
       }
-    }
+    } ~ smallRoute
 }
